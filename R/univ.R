@@ -65,27 +65,27 @@ calout.detect <- function( x, alpha=0.05,
 	}
 
 
-ckesd <-
-function(x, k)
-{
-	n <- as.integer(length(x))
-	x <- as.double(x)
-	k <- as.integer(k)
-	resvec <- as.double(rep(0, k))
-	q <- as.integer(rep(0, n))
-	indvec <- as.integer(rep(0, k))
-	z <- .C("ckesd",
-		x = x,
-		n = n,
-		k = k,
-		resvec = resvec,
-		q = q,
-		indvec = indvec,
-		NAOK = TRUE,
-		specialsok = TRUE,
-		pointers = NULL)
-	z
-}
+#ckesd <-
+#function(x, k)
+#{
+#	n <- as.integer(length(x))
+#	x <- as.double(x)
+#	k <- as.integer(k)
+#	resvec <- as.double(rep(0, k))
+#	q <- as.integer(rep(0, n))
+#	indvec <- as.integer(rep(0, k))
+#	z <- .C("ckesd",
+#		x = x,
+#		n = n,
+#		k = k,
+#		resvec = resvec,
+#		q = q,
+#		indvec = indvec,
+#		NAOK = TRUE,
+#		specialsok = TRUE,
+#		pointers = NULL)
+#	z
+#}
 
 lamtab <-
 function(n, k, alpha = 0.05)

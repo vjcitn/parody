@@ -8,30 +8,30 @@ MLvarcov.di <- function(x, i) {
  }
 
 # following is nice for using R resources but quite slow
-C.exch <- function(x)
- {
-# returns an N vector
- .Call("CPexchC", as.double(x), ncol(x), nrow(x), body(MLvarcov.di), 
-    body(MLvarcov), new.env())
- }
+#C.exch <- function(x)
+# {
+## returns an N vector
+# .Call("CPexchC", as.double(x), ncol(x), nrow(x), body(MLvarcov.di), 
+#    body(MLvarcov), new.env())
+# }
 
 # following is much faster
 
-CC.exch <- function (x)
-{
-    if (!is.matrix(x))
-        stop("need mat")
-    n <- nrow(x)
-    nc <- ncol(x)
-    ans1 <- rep(0, nc)
-    ans2 <- x-x
-    ans3 <- matrix(0,nc,nc)
-    ans4 <- rep(0,n)
-    out <- .C("CCexch", as.integer(n), as.integer(nc), as.double(x),
-        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),
-        ans=ans4)
-    out$ans
-}
+#CC.exch <- function (x)
+#{
+#    if (!is.matrix(x))
+#        stop("need mat")
+#    n <- nrow(x)
+#    nc <- ncol(x)
+#    ans1 <- rep(0, nc)
+#    ans2 <- x-x
+#    ans3 <- matrix(0,nc,nc)
+#    ans4 <- rep(0,n)
+#    out <- .C("CCexch", as.integer(n), as.integer(nc), as.double(x),
+#        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),
+#        ans=ans4)
+#    out$ans
+#}
 
 # following is faster, no C, but proper updating
 
@@ -77,27 +77,27 @@ ddcovGen <- function(x) {
 #
 # following is fastest, above procedure coded in C
 
-DDC.exch <- function (x)
-{
-    if (!is.matrix(x))
-        stop("need mat")
-    n <- nrow(x)
-    nc <- ncol(x)
-    ans1 <- rep(0, nc)
-    ans1b <- rep(0, nc)
-    ans1c <- rep(0, nc)
-    ans2 <- x-x
-    ans3 <- matrix(0,nc,nc)
-    ans3b <-  matrix(0, nc, nc)
-    ans3c <-  matrix(0, nc, nc)
-    ans3d <- matrix(0,nc,nc)
-    ans4 <- rep(0,n)
-    out <- .C("ddDetRat", as.integer(n), as.integer(nc), as.double(x),
-        as.double(ans3), px1=as.double(ans1),nx1=as.double(ans4),
-        as.double(ans3b), as.double(ans1b), as.double(ans1c), 
-        as.double(ans3c), as.double(ans3d))
-    out$nx1
-}
+#DDC.exch <- function (x)
+#{
+#    if (!is.matrix(x))
+#        stop("need mat")
+#    n <- nrow(x)
+#    nc <- ncol(x)
+#    ans1 <- rep(0, nc)
+#    ans1b <- rep(0, nc)
+#    ans1c <- rep(0, nc)
+#    ans2 <- x-x
+#    ans3 <- matrix(0,nc,nc)
+#    ans3b <-  matrix(0, nc, nc)
+#    ans3c <-  matrix(0, nc, nc)
+#    ans3d <- matrix(0,nc,nc)
+#    ans4 <- rep(0,n)
+#    out <- .C("ddDetRat", as.integer(n), as.integer(nc), as.double(x),
+#        as.double(ans3), px1=as.double(ans1),nx1=as.double(ans4),
+#        as.double(ans3b), as.double(ans1b), as.double(ans1c), 
+#        as.double(ans3c), as.double(ans3d))
+#    out$nx1
+#}
 
 
 # following are functions to HELP verify above
@@ -132,86 +132,86 @@ s2ml <- function(x)
  tr(mlvar(x))/ncol(x)
 
 
-Cdemean <- function (x,i) 
-{
-    if (!is.matrix(x)) 
-        stop("need mat")
-    if (i >= nrow(x)) stop("i must be zero-based")
-    n <- nrow(x)
-    nc <- ncol(x)
-    ans1 <- rep(0, nc)
-    ans2 <- x-x
-    out <- .C("demean", as.integer(n), as.integer(nc), as.double(x), 
-        as.double(ans1), demeaned=as.double(ans2), as.integer(i))
-    matrix(out$demeaned,nc=ncol(x))
-}
-Cvarcov <- function (x,i) 
-{
-    if (!is.matrix(x)) 
-        stop("need mat")
-    if (i >= nrow(x)) stop("i must be zero-based")
-    n <- nrow(x)
-    nc <- ncol(x)
-    ans1 <- rep(0, nc)
-    ans2 <- x-x
-    ans3 <- matrix(0,nc,nc)
-    out <- .C("varcov", as.integer(n), as.integer(nc), as.double(x), 
-        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),as.integer(i))
-    matrix(out$varcov,nc=ncol(x))
-}
-CrhoML <- function (x,i) 
-{
-    if (!is.matrix(x)) 
-        stop("need mat")
-    n <- nrow(x)
-    nc <- ncol(x)
-    ans1 <- rep(0, nc)
-    ans2 <- x-x
-    ans3 <- matrix(0,nc,nc)
-    out <- .C("rhoEx", as.integer(n), as.integer(nc), as.double(x), 
-        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),
-        rho=double(1),as.integer(i))
-    out$rho
-}
-CdetR <- function (x,i) 
-{
-    if (!is.matrix(x)) 
-        stop("need mat")
-    n <- nrow(x)
-    nc <- ncol(x)
-    ans1 <- rep(0, nc)
-    ans2 <- x-x
-    ans3 <- matrix(0,nc,nc)
-    out <- .C("detREx", as.integer(n), as.integer(nc), as.double(x), 
-        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),
-        rho=double(1),det=double(1),as.integer(i))
-    out$det
-}
-
-s2ML <- function (x,i)
-{
-    if (!is.matrix(x))
-        stop("need mat")
-    n <- nrow(x)
-    nc <- ncol(x)
-    ans1 <- rep(0, nc)
-    ans2 <- x-x
-    ans3 <- matrix(0,nc,nc)
-    out <- .C("s2ML", as.integer(n), as.integer(nc), as.double(x),
-        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),
-        rho=double(1), as.integer(i))
-    out$rho
-}
+#Cdemean <- function (x,i) 
+#{
+#    if (!is.matrix(x)) 
+#        stop("need mat")
+#    if (i >= nrow(x)) stop("i must be zero-based")
+#    n <- nrow(x)
+#    nc <- ncol(x)
+#    ans1 <- rep(0, nc)
+#    ans2 <- x-x
+#    out <- .C("demean", as.integer(n), as.integer(nc), as.double(x), 
+#        as.double(ans1), demeaned=as.double(ans2), as.integer(i))
+#    matrix(out$demeaned,nc=ncol(x))
+#}
+#Cvarcov <- function (x,i) 
+#{
+#    if (!is.matrix(x)) 
+#        stop("need mat")
+#    if (i >= nrow(x)) stop("i must be zero-based")
+#    n <- nrow(x)
+#    nc <- ncol(x)
+#    ans1 <- rep(0, nc)
+#    ans2 <- x-x
+#    ans3 <- matrix(0,nc,nc)
+#    out <- .C("varcov", as.integer(n), as.integer(nc), as.double(x), 
+#        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),as.integer(i))
+#    matrix(out$varcov,nc=ncol(x))
+#}
+#CrhoML <- function (x,i) 
+#{
+#    if (!is.matrix(x)) 
+#        stop("need mat")
+#    n <- nrow(x)
+#    nc <- ncol(x)
+#    ans1 <- rep(0, nc)
+#    ans2 <- x-x
+#    ans3 <- matrix(0,nc,nc)
+#    out <- .C("rhoEx", as.integer(n), as.integer(nc), as.double(x), 
+#        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),
+#        rho=double(1),as.integer(i))
+#    out$rho
+#}
+#CdetR <- function (x,i) 
+#{
+#    if (!is.matrix(x)) 
+#        stop("need mat")
+#    n <- nrow(x)
+#    nc <- ncol(x)
+#    ans1 <- rep(0, nc)
+#    ans2 <- x-x
+#    ans3 <- matrix(0,nc,nc)
+#    out <- .C("detREx", as.integer(n), as.integer(nc), as.double(x), 
+#        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),
+#        rho=double(1),det=double(1),as.integer(i))
+#    out$det
+#}
+#
+#s2ML <- function (x,i)
+#{
+#    if (!is.matrix(x))
+#        stop("need mat")
+#    n <- nrow(x)
+#    nc <- ncol(x)
+#    ans1 <- rep(0, nc)
+#    ans2 <- x-x
+#    ans3 <- matrix(0,nc,nc)
+#    out <- .C("s2ML", as.integer(n), as.integer(nc), as.double(x),
+#        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),
+#        rho=double(1), as.integer(i))
+#    out$rho
+#}
 
 
 # */
 
-CPexchC <- function(x)
- {
-# returns an N vector
- .Call("CPexchC", as.double(x), ncol(x), nrow(x), body(MLvarcov.di), 
-    body(MLvarcov), new.env())
- }
+#CPexchC <- function(x)
+# {
+## returns an N vector
+# .Call("CPexchC", as.double(x), ncol(x), nrow(x), body(MLvarcov.di), 
+#    body(MLvarcov), new.env())
+# }
 
 vtrace <- function(x) sum(diag(x))
 

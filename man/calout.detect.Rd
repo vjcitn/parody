@@ -9,10 +9,14 @@ are provided in which the outlier misclassification rate
 for Gaussian samples is fixed over a range of sample sizes.
 }
 \usage{
-calout.detect(x, alpha=0.05, method=c("GESD", "boxplot", "medmad", "shorth"),
- k=((length(x) \%\% 2) * floor(length(x)/2) + 
-     (1 - (length(x) \%\% 2)) * (length(x)/2 -1 )),
- scaling, ftype, location, scale, gen.region)
+calout.detect(x, alpha = 0.05, method = c("GESD", "boxplot", "medmad", 
+    "shorth", "hybrid"), k = ((length(x)\%\%2) * floor(length(x)/2) + 
+    (1 - (length(x)\%\%2)) * (length(x)/2 - 1)), scaling, ftype, 
+    location, scale, gen.region = function(x, location, scale, 
+        scaling, alpha) {
+        g <- scaling(length(x), alpha)
+        location(x) + c(-1, 1) * g * scale(x)
+    })
 }
 \arguments{
 \item{x}{
@@ -97,6 +101,6 @@ calout.detect(lead,alpha=.05,method="medmad",scaling=hamp.scale.3)
 calout.detect(lead,alpha=.05,method="shorth")
 
 }
-\keyword{outliers,}
+\keyword{models}
 % Converted by Sd2Rd version 1.21.
 

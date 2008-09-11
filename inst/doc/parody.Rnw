@@ -1,3 +1,8 @@
+%\VignetteIndexEntry{parody: parametric and resistant outlier detection}
+%\VignetteDepends{parody}
+%\VignetteKeywords{outliers}
+%\VignettePackage{parody}
+
 
 %
 % NOTE -- ONLY EDIT THE .Rnw FILE!!!  The .tex file is

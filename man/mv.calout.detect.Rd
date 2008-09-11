@@ -46,8 +46,10 @@
 interface to a parametric multivariate outlier detection algorithm
 }
 \usage{
-mv.calout.detect(x, k=floor((nrow(x) - 1)/2), Ci=C.unstr, 
-     lamfun=lams.unstr, alpha=0.05)
+mv.calout.detect(x, k = min(floor((nrow(x) - 1)/2), 100), Ci = C.unstr, 
+    lamfun = lams.unstr, alpha = 0.05, method = c("parametric", 
+        "rocke", "kosinski.raw", "kosinski.exch")[1], ...) 
+
 }
 %- maybe also `usage' for other objects documented here.
 \arguments{
@@ -60,6 +62,7 @@ option is \code{C.unstr} (Caroni and
 Prescott 1992 Appl Stat).}
   \item{lamfun}{ function computing lambda, the critical values for Ci }
   \item{alpha}{ false outlier labeling rate }
+  \item{method}{string identifying algorithm to use}
 }
 \details{
 }
@@ -79,6 +82,6 @@ mv.calout.detect(tcost)
 data(bushfire)
 mv.calout.detect(bushfire)
 }
-\keyword{ outliers }% at least one, from doc/KEYWORDS
+\keyword{ models }% at least one, from doc/KEYWORDS
 
 
