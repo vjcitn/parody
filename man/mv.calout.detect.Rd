@@ -39,6 +39,7 @@
 \alias{tcost}
 \alias{NEWGAMS}
 \alias{MATLIST}
+\alias{bushfire}
 
 %- Also NEED an `\alias' for EACH other topic documented here.
 \title{ calibrated multivariate outlier detection }
@@ -66,6 +67,8 @@ Prescott 1992 Appl Stat).}
   \item{\dots}{reserved for future use}
 }
 \details{
+bushfire is a dataset distributed by Kosinski to
+illustrate his method.
 }
 \value{
 a list with components

@@ -20,7 +20,6 @@ if Alpha == 0.5, the \code{shorth} is calculated
 }
 \value{
 a list, say L, with components
-\describe{
 \item{shorth}{
 a 2-vector with endpoints of the shortest Alpha-sample
 }
@@ -52,7 +51,7 @@ unbiased for Gaussian standard deviation, when Alpha=.5.
 }
 \item{Alpha}{
 coverage fraction used
-}}}
+}}
 \references{
 Rousseeuw and Leroy, Stat Neer (1988), Gruebel, Ann Stat (1988)
 }
