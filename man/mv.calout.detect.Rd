@@ -63,6 +63,7 @@ Prescott 1992 Appl Stat).}
   \item{lamfun}{ function computing lambda, the critical values for Ci }
   \item{alpha}{ false outlier labeling rate }
   \item{method}{string identifying algorithm to use}
+  \item{\dots}{reserved for future use}
 }
 \details{
 }

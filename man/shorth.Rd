@@ -20,7 +20,7 @@ if Alpha == 0.5, the \code{shorth} is calculated
 }
 \value{
 a list, say L, with components
-\description{
+\describe{
 \item{shorth}{
 a 2-vector with endpoints of the shortest Alpha-sample
 }
