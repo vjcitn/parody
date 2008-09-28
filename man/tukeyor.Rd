@@ -27,18 +27,10 @@ tukeyor(x, alpha=0.05, g=box.scale(length(x), alpha = alpha), ftype="ideal")
   \item{g}{ g}
   \item{ftype}{ ftype}
 }
-\details{
-}
-\value{
-}
-\references{  }
 \author{Vince Carey <stvjc@channing.harvard.edu>}
-\note{  }
-
-
-\seealso{  }
-
 \examples{
+data(tcost)
+apply(tcost, 2, tukeyor)
 }
 \keyword{ models }
 

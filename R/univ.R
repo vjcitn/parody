@@ -127,10 +127,10 @@ gesdri <-
 function(x, k = ((length(x) %% 2) * floor(length(x)/2) +
 	      (1 - (length(x) %% 2)) * (length(x)/2 - 1)), alpha = 0.05)
 {
-        if (is.loaded("ckesd"))
-             E <- ckesd(x, k)
-        else
-             E <- skesd(x, k)
+#        if (is.loaded("ckesd"))
+#             E <- ckesd(x, k)
+#        else
+        E <- skesd(x, k)
 	R <- E$res
 	I <- E$ind
 	n <- length(x)	#if(n == 100 & k == 49)

@@ -18,18 +18,11 @@ box.scale(n, alpha=0.05)
   \item{n}{ n}
   \item{alpha}{ alpha}
 }
-\details{
-}
-\value{
-}
-\references{  }
+
 \author{Vince Carey <stvjc@channing.harvard.edu>}
-\note{  }
-
-
-\seealso{  }
 
 \examples{
+box.scale(20)
 }
 \keyword{ models }
 

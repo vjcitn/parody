@@ -35,6 +35,12 @@ for scale; and the fourth selects Rousseeuw's rule, with
 the midpoint of the shortest half sample used as location
 estimator, and the length of this shortest half sample used 
 as scale estimator.
+
+An important characteristic of the GESD procedure is that
+the critical values for outlier labeling are calibrated to
+preserve the overall Type I error rate of the procedure
+given that there will be k tests, whether or not any
+outliers are present in the data.
 }
 \item{k}{
 for GESD, the prespecified upper limit on the number of 

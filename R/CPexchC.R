@@ -215,7 +215,7 @@ s2ml <- function(x)
 
 vtrace <- function(x) sum(diag(x))
 
-s2 <- function(x) vtrace(cpvar(x))/ncol(x)
+#s2 <- function(x) vtrace(cpvar(x))/ncol(x)
 
 d1S <- function(x,i) {n <- nrow(x); (n-2)*var(x[-i,])/(n-1) }
 

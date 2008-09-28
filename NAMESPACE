@@ -1,3 +1,4 @@
 import(tools)
 
-export(calout.detect, mv.calout.detect, hamp.scale.3)
+export(calout.detect, mv.calout.detect, hamp.scale.3,
+ tukeyor, box.scale)
