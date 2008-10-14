@@ -25,7 +25,7 @@ a 2-vector with endpoints of the shortest Alpha-sample
 }
 \item{length.shorth}{
 see previous return component
-L$shorth[2]-L$shorth[1]
+\code{L$shorth[2]-L$shorth[1]}
 }
 \item{midpt.shorth}{
 mean(L[["shorth"]])
@@ -37,7 +37,7 @@ as a location estimator
 \item{correction.parity.dep}{
 correction factor to be applied to achieve
 approximate unbiasedness and diminish small-sample
-parity dependence; L["shorth"]] * L[["correction"]] is approximately
+parity dependence; \code{L["shorth"]] * L[["correction"]]} is approximately
 unbiased for the Gaussian standard deviation, for
 0 < Alpha < 1.
 }
@@ -46,7 +46,7 @@ correction factor to be applied along with
 correction.parity.dep when Alpha = .5; empirically
 derived bias correction useful for 10 < N < 2000 and
 possibly beyond.  To use, divide: 
-(L[["shorth"]] * L[["correction"]] / L[["bias.corr"]]) is approximately
+\code{(L[["shorth"]] * L[["correction"]] / L[["bias.corr"]])} is approximately
 unbiased for Gaussian standard deviation, when Alpha=.5.
 }
 \item{Alpha}{
