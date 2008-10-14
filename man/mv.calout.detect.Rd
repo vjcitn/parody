@@ -1,45 +1,5 @@
 \name{mv.calout.detect}
 \alias{mv.calout.detect}
-\alias{acll}
-\alias{C.exch}
-\alias{checksize}
-\alias{checksize.rocke}
-\alias{cll}
-\alias{contsamp}
-\alias{CPexchC}
-\alias{CPunstrC}
-\alias{C.unstr}
-\alias{d1S}
-\alias{d1s2}
-\alias{exchsamp}
-\alias{fig2demo}
-\alias{full.sizetab}
-\alias{gamg}
-\alias{gamk}
-\alias{gencs}
-\alias{hasoutK1}
-\alias{indsamp}
-\alias{.initContam}
-\alias{lams.exch}
-\alias{lams.unstr}
-\alias{mixc}
-\alias{MLvarcov}
-\alias{MLvarcov.di}
-\alias{mv.calout.detect.exch}
-\alias{p2gam}
-\alias{plot.gamlist}
-\alias{roctab}
-\alias{s2}
-\alias{sizetab}
-\alias{sizetab.rocke}
-\alias{standardContam}
-\alias{table1}
-\alias{tailqK1}
-\alias{vtrace}
-\alias{tcost}
-\alias{NEWGAMS}
-\alias{MATLIST}
-\alias{bushfire}
 
 %- Also NEED an `\alias' for EACH other topic documented here.
 \title{ calibrated multivariate outlier detection }

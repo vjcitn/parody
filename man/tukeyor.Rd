@@ -1,21 +1,8 @@
 \name{tukeyor}
 \alias{tukeyor}
-\alias{al}
-\alias{ckesd}
-\alias{gesdri}
-\alias{hampoutinds}
-\alias{lamtab}
-\alias{logit}
-\alias{rououtinds}
-\alias{tukeyorinds}
-\alias{skesd}
-% [1] "al"             "box.scale"      "calout.detect"  "ckesd"         
-% [5] "gesdri"         "hamp.scale.3"   "hamp.scale.4"   "hampor"        
-% [9] "hampoutinds"    "lamtab"         "logit"          "prompt.default"
-%[13] "rouor"          "rououtinds"     "shorth"         "shorth.scale"  
-%[17] "skesd"          "tukeyor"        "tukeyorinds"   
 \alias{rouor}
 \alias{hampor}
+
 \title{calibrated outlier region based on various algorithms  }
 \description{calibrated outlier region based on various algorithms  }
 \usage{
