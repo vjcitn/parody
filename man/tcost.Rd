@@ -10,9 +10,13 @@ Multivariate data on milk transportation costs
 \format{
   The format is:
  num [1:36, 1:3] 16.44 7.19 9.92 4.24 11.2 ...
+ 
  - attr(*, "dimnames")=List of 2
-  ..$ : chr [1:36] "1" "2" "3" "4" ...
-  ..$ : chr [1:3] "fuel" "repair" "capital"
+  \describe{
+    \item{\code{..$}:}{chr [1:36] "1" "2" "3" "4" ...}
+
+    \item{\code{..$}:}{chr [1:3] "fuel" "repair" "capital"}
+  }
 }
 \details{
 Extract from Johnson and Wichern example dataset on milk
@@ -21,7 +25,7 @@ transportation.
 \source{
 Johnson and Wichern,
 Applied Multivariate Statistical Analysis, 3rd edition, p263 }
-}
+
 %\references{
 %  ~~ possibly secondary sources and usages ~~
 %}
