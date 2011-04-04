@@ -102,7 +102,7 @@ function(n, k, alpha = 0.05)
 }
 
 
-skesd <- function(x, k)
+skesd.old <- function(x, k)
 {
         bigres <- rep(NA, k)
         bigresind <- rep(NA, k)
@@ -122,6 +122,30 @@ skesd <- function(x, k)
         }
         list(res = bigres, ind = inds)
 }
+
+skesd <- function(x, k)
+{
+# thanks to Jerry Lewis of Biogen Idec
+        n <- length(x)
+        ind <- order(x)  # only sort once, outside the loop
+        curx <- x[ind]
+        inds <- bigres <- NULL
+        for(last in n:(n-k+1)) {
+                m <- mean(curx)
+                ares <- abs(curx[c(1,last)] - m)
+                if(ares[1]==ares[2]) {  # handle ties on opposite sides of m deliberately -- test the one farthest from median
+                    i <- ifelse(median(curx)>m,1,last)
+                } else {
+                    i <- ifelse(ares[1]>ares[2],1,last)
+                }
+                bigres <- c(bigres, ares[ifelse(i==1,1,2)]/sqrt(var(curx)))
+                curx <- curx[-i]
+                inds <- c(inds, ind[i])
+                ind <- ind[-i]
+        }
+        list(res = bigres, ind = inds)
+}
+
 
 gesdri <-
 function(x, k = ((length(x) %% 2) * floor(length(x)/2) +
