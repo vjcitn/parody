@@ -392,5 +392,3 @@ shorth <- function(x, Alpha = 0.5)
 logit <- function(x) log(x/(1-x))
 al <- function(x) plogis(x)
 
-
-
