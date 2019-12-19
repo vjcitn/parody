@@ -1,11 +1,13 @@
 Package: parody
 Title: Parametric And Resistant Outlier DYtection
-Version: 1.45.1
+Version: 1.45.4
 Author: VJ Carey <stvjc@channing.harvard.edu>
-Description: routines for univariate and multivariate outlier detection
+Description: Provide routines for univariate and multivariate outlier detection
         with a focus on parametric methods, but support for some
-        methods based on resistant statistics
-Depends: R (>= 2.5.0), methods, tools, utils
+        methods based on resistant statistics.
+Depends: R (>= 2.5.0), tools, utils
+Suggests: knitr, BiocStyle
 Maintainer: VJ Carey <stvjc@channing.harvard.edu>
 License: Artistic-2.0
+VignetteBuilder: knitr
 biocViews: MultipleComparison
