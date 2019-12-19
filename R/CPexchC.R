@@ -62,8 +62,8 @@ ddcovGen <- function(x) {
 # suitable for downdating upon removing i
 #
  function(i) {
-   om <- matrix(x[i,],nc=1)
-   lm <- matrix((N*mx - om)/(N-1),nc=1)
+   om <- matrix(x[i,],ncol=1)
+   lm <- matrix((N*mx - om)/(N-1),ncol=1)
    off <- ((N-1)/N)* (om-lm)%*%t(om-lm)
    mlv <- (fssq - off)/(N-1)
    trv <- sum(diag(mlv))
@@ -143,7 +143,7 @@ s2ml <- function(x)
 #    ans2 <- x-x
 #    out <- .C("demean", as.integer(n), as.integer(nc), as.double(x), 
 #        as.double(ans1), demeaned=as.double(ans2), as.integer(i))
-#    matrix(out$demeaned,nc=ncol(x))
+#    matrix(out$demeaned,ncol=ncol(x))
 #}
 #Cvarcov <- function (x,i) 
 #{
@@ -157,7 +157,7 @@ s2ml <- function(x)
 #    ans3 <- matrix(0,nc,nc)
 #    out <- .C("varcov", as.integer(n), as.integer(nc), as.double(x), 
 #        as.double(ans1), demeaned=as.double(ans2),varcov=as.double(ans3),as.integer(i))
-#    matrix(out$varcov,nc=ncol(x))
+#    matrix(out$varcov,ncol=ncol(x))
 #}
 #CrhoML <- function (x,i) 
 #{

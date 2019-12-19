@@ -5,7 +5,7 @@ Author: VJ Carey <stvjc@channing.harvard.edu>
 Description: Provide routines for univariate and multivariate outlier detection
         with a focus on parametric methods, but support for some
         methods based on resistant statistics.
-Depends: R (>= 2.5.0), tools, utils
+Depends: R (>= 3.5.0), tools, utils
 Suggests: knitr, BiocStyle
 Maintainer: VJ Carey <stvjc@channing.harvard.edu>
 License: Artistic-2.0

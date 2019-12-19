@@ -1,5 +1,6 @@
 ---
 title: "parody: parametric and resistant outlier dytection"
+shorttitle: "outlier dytection methods"
 author: "Vincent J. Carey, stvjc at channing.harvard.edu"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 vignette: >
@@ -7,9 +8,6 @@ vignette: >
   %\VignetteIndexEntry{parody: parametric and resistant outlier dytection}
   %\VignetteEncoding{UTF-8}
 output:
-  BiocStyle::pdf_document:
-    toc: yes
-    number_sections: yes
   BiocStyle::html_document:
     highlight: pygments
     number_sections: yes

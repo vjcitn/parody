@@ -37,7 +37,9 @@ a list with components
   \item{k }{input parameter k }
   \item{alpha}{input parameter alpha}
 }
-\references{ }
+\references{ C. Caroni and P. Prescott,
+Journal of the Royal Statistical Society. Series C (Applied Statistics),
+Vol. 41, No. 2 (1992), pp. 355-364 }
 \author{ VJ Carey }
 
 \examples{
