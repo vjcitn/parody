@@ -1,6 +1,6 @@
 Package: parody
 Title: Parametric And Resistant Outlier DYtection
-Version: 1.45.5
+Version: 1.46.0
 Author: VJ Carey <stvjc@channing.harvard.edu>
 Description: Provide routines for univariate and multivariate outlier detection
         with a focus on parametric methods, but support for some
