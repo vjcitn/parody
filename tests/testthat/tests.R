@@ -5,7 +5,7 @@ test_that("box.scale computes, etc.", {
  expect_true( bs < 2.231 )
  hs = hamp.scale.3( 15, .05)
  expect_true(hs > 6.337 & hs < 6.338)
- expect_error({ hs <- hamp.scale.3( 15, .05)})
+ expect_error({ hs <- hamp.scale.3( 15, .15)})
  expect_true(tukeyor(mtcars$mpg)[2] > 39.13)
 })
 
@@ -18,7 +18,7 @@ test_that("calout.detect computes", {
  expect_true(x$val == 1000)
  x = calout.detect(c(mtcars$mpg,1000), method="shorth")
  expect_true(length(x$outlier.region)==2)
- expect_true(x$outlier.region[1] < -3.352)
+ expect_true(x$outlier.region[1] < -3.351)
  expect_true(x$outlier.region[2] > 40.05)
 })
 
