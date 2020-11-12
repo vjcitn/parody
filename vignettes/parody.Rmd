@@ -92,7 +92,7 @@ function(n,alpha)1.5)
 We can see that this agrees with the R visualization.
 
 Theoretical work on the calibration of the boxplot
-rule is deployed when \texttt{ftype} is set to \texttt{"ideal"}.
+rule is deployed when `ftype` is set to `"ideal"`.
 See the manual page for references.
 ```{r dobox3}
 calout.detect(lead,alpha=.05,method="boxplot",ftype="ideal")
@@ -129,7 +129,7 @@ calout.detect(lead,alpha=.05,method="shorth")
 
 # Multivariate samples
 
-A sample dataset called \texttt{tcost} is supplied with
+A sample dataset called `tcost` is supplied with
 the package.  Before visualizing, we compute a default
 multivariate outlier criterion, due to Caroni and Prescott,
 that generalizes Rosner's GESD:
