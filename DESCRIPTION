@@ -1,6 +1,6 @@
 Package: parody
 Title: Parametric And Resistant Outlier DYtection
-Version: 1.49.9
+Version: 1.49.10
 Authors@R:
     person(given = "Vince",
            family = "Carey",
@@ -11,7 +11,7 @@ Description: Provide routines for univariate and multivariate outlier detection
         with a focus on parametric methods, but support for some
         methods based on resistant statistics.
 Depends: R (>= 3.5.0), tools, utils
-Suggests: knitr, BiocStyle, testthat
+Suggests: knitr, BiocStyle, testthat, rmarkdown
 License: Artistic-2.0
 VignetteBuilder: knitr
 biocViews: MultipleComparison
