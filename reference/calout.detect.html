@@ -47,6 +47,8 @@ for Gaussian samples is fixed over a range of sample sizes." />
 
 
 
+
+
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -58,9 +60,15 @@ for Gaussian samples is fixed over a range of sample sizes." />
 
 
 
+  
+
+  
+
   </head>
 
   <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -74,7 +82,7 @@ for Gaussian samples is fixed over a range of sample sizes." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">parody</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.49.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.49.7</span>
       </span>
     </div>
 
@@ -113,14 +121,14 @@ are provided in which the outlier misclassification rate
 for Gaussian samples is fixed over a range of sample sizes.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>x</span>, alpha <span class='op'>=</span> <span class='fl'>0.05</span>, method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"GESD"</span>, <span class='st'>"boxplot"</span>, <span class='st'>"medmad"</span>, 
-    <span class='st'>"shorth"</span>, <span class='st'>"hybrid"</span><span class='op'>)</span>, k <span class='op'>=</span> <span class='op'>(</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>%%</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span> 
-    <span class='op'>(</span><span class='fl'>1</span> <span class='op'>-</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>%%</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>*</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>2</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>, <span class='va'>scaling</span>, <span class='va'>ftype</span>, 
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>x</span>, alpha <span class='op'>=</span> <span class='fl'>0.05</span>, method <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"GESD"</span>, <span class='st'>"boxplot"</span>, <span class='st'>"medmad"</span>, 
+    <span class='st'>"shorth"</span>, <span class='st'>"hybrid"</span><span class='op'>)</span>, k <span class='op'>=</span> <span class='op'>(</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>floor</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span> 
+    <span class='op'>(</span><span class='fl'>1</span> <span class='op'>-</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'><a href='https://rdrr.io/r/base/Arithmetic.html'>%%</a></span><span class='fl'>2</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>*</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span><span class='op'>/</span><span class='fl'>2</span> <span class='op'>-</span> <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>, <span class='va'>scaling</span>, <span class='va'>ftype</span>, 
     <span class='va'>location</span>, <span class='va'>scale</span>, gen.region <span class='op'>=</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>location</span>, <span class='va'>scale</span>, 
         <span class='va'>scaling</span>, <span class='va'>alpha</span><span class='op'>)</span> <span class='op'>{</span>
         <span class='va'>g</span> <span class='op'>&lt;-</span> <span class='fu'>scaling</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>, <span class='va'>alpha</span><span class='op'>)</span>
         <span class='fu'>location</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>1</span>, <span class='fl'>1</span><span class='op'>)</span> <span class='op'>*</span> <span class='va'>g</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-    <span class='op'>}</span><span class='op'>)</span></pre>
+    <span class='op'>}</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -217,44 +225,50 @@ Rosner (1983 Technom), Hoaglin and Iglewicz (1987 JASA),
 Carey, Walters, Wager and Rosner (1997 Technom)</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>lead</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>83</span>, <span class='fl'>70</span>, <span class='fl'>62</span>, <span class='fl'>55</span>, <span class='fl'>56</span>, <span class='fl'>57</span>, <span class='fl'>57</span>, <span class='fl'>58</span>, <span class='fl'>59</span>, <span class='fl'>50</span>, <span class='fl'>51</span>, <span class='fl'>52</span>, <span class='fl'>52</span>, <span class='fl'>52</span>, <span class='fl'>54</span>, <span class='fl'>54</span>, <span class='fl'>45</span>, <span class='fl'>46</span>, <span class='fl'>48</span>, 
-        <span class='fl'>48</span>, <span class='fl'>49</span>, <span class='fl'>40</span>, <span class='fl'>40</span>, <span class='fl'>41</span>, <span class='fl'>42</span>, <span class='fl'>42</span>, <span class='fl'>44</span>, <span class='fl'>44</span>, <span class='fl'>35</span>, <span class='fl'>37</span>, <span class='fl'>38</span>, <span class='fl'>38</span>, <span class='fl'>34</span>, <span class='fl'>13</span>, <span class='fl'>14</span><span class='op'>)</span>
-
-<span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>lead</span>,alpha<span class='op'>=</span><span class='fl'>.05</span>,method<span class='op'>=</span><span class='st'>"boxplot"</span>,ftype<span class='op'>=</span><span class='st'>"ideal"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: no data values in outlier region</span></div><div class='output co'>#&gt; $ind
-#&gt; [1] NA
-#&gt; 
-#&gt; $val
-#&gt; [1] NA
-#&gt; 
-#&gt; $outlier.region
-#&gt; [1]  7.808079 87.191921
-#&gt; </div><div class='input'><span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>lead</span>,alpha<span class='op'>=</span><span class='fl'>.05</span>,method<span class='op'>=</span><span class='st'>"GESD"</span>,k<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $ind
-#&gt; [1]  1 34 35
-#&gt; 
-#&gt; $val
-#&gt; [1] 83 13 14
-#&gt; </div><div class='input'><span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>lead</span>,alpha<span class='op'>=</span><span class='fl'>.05</span>,method<span class='op'>=</span><span class='st'>"medmad"</span>,scaling<span class='op'>=</span><span class='va'>hamp.scale.3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; $ind
-#&gt; [1] 34 35  1
-#&gt; 
-#&gt; $val
-#&gt; [1] 13 14 83
-#&gt; 
-#&gt; $outlier.region
-#&gt; [1] 14.92932 81.07068
-#&gt; </div><div class='input'><span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>lead</span>,alpha<span class='op'>=</span><span class='fl'>.05</span>,method<span class='op'>=</span><span class='st'>"shorth"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: no data values in outlier region</span></div><div class='output co'>#&gt; $ind
-#&gt; [1] NA
-#&gt; 
-#&gt; $val
-#&gt; [1] NA
-#&gt; 
-#&gt; $outlier.region
-#&gt; [1]  6.215225 94.784775
-#&gt; </div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>lead</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>83</span>, <span class='fl'>70</span>, <span class='fl'>62</span>, <span class='fl'>55</span>, <span class='fl'>56</span>, <span class='fl'>57</span>, <span class='fl'>57</span>, <span class='fl'>58</span>, <span class='fl'>59</span>, <span class='fl'>50</span>, <span class='fl'>51</span>, <span class='fl'>52</span>, <span class='fl'>52</span>, <span class='fl'>52</span>, <span class='fl'>54</span>, <span class='fl'>54</span>, <span class='fl'>45</span>, <span class='fl'>46</span>, <span class='fl'>48</span>, </span>
+<span class='r-in'>        <span class='fl'>48</span>, <span class='fl'>49</span>, <span class='fl'>40</span>, <span class='fl'>40</span>, <span class='fl'>41</span>, <span class='fl'>42</span>, <span class='fl'>42</span>, <span class='fl'>44</span>, <span class='fl'>44</span>, <span class='fl'>35</span>, <span class='fl'>37</span>, <span class='fl'>38</span>, <span class='fl'>38</span>, <span class='fl'>34</span>, <span class='fl'>13</span>, <span class='fl'>14</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>lead</span>,alpha<span class='op'>=</span><span class='fl'>.05</span>,method<span class='op'>=</span><span class='st'>"boxplot"</span>,ftype<span class='op'>=</span><span class='st'>"ideal"</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>no data values in outlier region</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $ind</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $val</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $outlier.region</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]  7.808079 87.191921</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>lead</span>,alpha<span class='op'>=</span><span class='fl'>.05</span>,method<span class='op'>=</span><span class='st'>"GESD"</span>,k<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $ind</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]  1 34 35</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $val</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 83 13 14</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>lead</span>,alpha<span class='op'>=</span><span class='fl'>.05</span>,method<span class='op'>=</span><span class='st'>"medmad"</span>,scaling<span class='op'>=</span><span class='va'>hamp.scale.3</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $ind</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 34 35  1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $val</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 13 14 83</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $outlier.region</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 14.92932 81.07068</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'><span class='fu'>calout.detect</span><span class='op'>(</span><span class='va'>lead</span>,alpha<span class='op'>=</span><span class='fl'>.05</span>,method<span class='op'>=</span><span class='st'>"shorth"</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>no data values in outlier region</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $ind</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $val</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] NA</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> $outlier.region</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]  6.215225 94.784775</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -266,11 +280,11 @@ Carey, Walters, Wager and Rosner (1997 Technom)</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Vince Carey.</p>
+  <p><p>Developed by Vince Carey.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -278,6 +292,8 @@ Carey, Walters, Wager and Rosner (1997 Technom)</p>
 
   
 
+
+  
 
   </body>
 </html>

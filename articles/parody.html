@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">parody</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.49.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.49.7</span>
       </span>
     </div>
 
@@ -54,13 +56,13 @@
 
       
 
-      </header><script src="parody_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="parody_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>parody: parametric and resistant outlier dytection</h1>
-                        <h4 class="author">Vincent J. Carey, stvjc at channing.harvard.edu</h4>
+                        <h4 data-toc-skip class="author">Vincent J. Carey, stvjc at channing.harvard.edu</h4>
             
-            <h4 class="date">November 12, 2020</h4>
+            <h4 data-toc-skip class="date">June 07, 2021</h4>
       
       
       <div class="hidden name"><code>parody.Rmd</code></div>
@@ -71,25 +73,25 @@
     
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
+<a href="#introduction" class="anchor" aria-hidden="true"></a>Introduction</h1>
 <p>Outliers are data points that seem anomalous. Precise quantitative measurement of anomalousness is easiest when a parametric probability model is adopted. Significant statistical and computational research has been devoted to devising and rationalizing criteria for outlyingness that do not require adoption of a parametric probability model. This package provides interfaces to various methods presented in the literature of statistical methods for measuring outlyingness in univariate and multivariate samples. It is offered as a resource through bioconductor.org because formal testing for outliers is a common concern of genome scale data analysis, in many different contexts.</p>
 </div>
 <div id="univariate-samples" class="section level1">
 <h1 class="hasAnchor">
-<a href="#univariate-samples" class="anchor"></a>Univariate samples</h1>
+<a href="#univariate-samples" class="anchor" aria-hidden="true"></a>Univariate samples</h1>
 <p>Davies and Gather (1992) present a detailed study of criteria for outlyingness in univariate samples. Inlier boundaries are defined, with form <span class="math inline">\((\hat{m}-c(n)\hat{s}, \hat{m} + c(n) \hat{s})\)</span>, where <span class="math inline">\(\hat{m}\)</span> is a location parameter estimate, <span class="math inline">\(\hat{s}\)</span> is a scale parameter estimate, and <span class="math inline">\(c(n)\)</span> are multipliers depending on sample size. Candidates for <span class="math inline">\(m\)</span> are trimmed mean, median, midpoint of shorth; candidates for <span class="math inline">\(s\)</span> include trimmed standard deviation, median absolute deviation (MAD), length of shorth. The familiar boxplot outlier labeling rules do not fall immediately into this framework, as the left and right inlier boundaries may not be equidistant from the location parameter value.</p>
 <p>This package provides functions implementing components of the various labeling rules; users may mix components to define their own procedures.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">parody</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">parody</span><span class="op">)</span></code></pre></div>
 <p>We define a dataset presented in Rosner (1983). The data concern tapping frequencies achieved by children with various exposures to lead.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">lead</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">83</span>, <span class="fl">70</span>, <span class="fl">62</span>, <span class="fl">55</span>, <span class="fl">56</span>, <span class="fl">57</span>, <span class="fl">57</span>, <span class="fl">58</span>, <span class="fl">59</span>, <span class="fl">50</span>, <span class="fl">51</span>, 
+<code class="sourceCode R"><span class="va">lead</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">83</span>, <span class="fl">70</span>, <span class="fl">62</span>, <span class="fl">55</span>, <span class="fl">56</span>, <span class="fl">57</span>, <span class="fl">57</span>, <span class="fl">58</span>, <span class="fl">59</span>, <span class="fl">50</span>, <span class="fl">51</span>, 
         <span class="fl">52</span>, <span class="fl">52</span>, <span class="fl">52</span>, <span class="fl">54</span>, <span class="fl">54</span>, <span class="fl">45</span>, <span class="fl">46</span>, <span class="fl">48</span>,
         <span class="fl">48</span>, <span class="fl">49</span>, <span class="fl">40</span>, <span class="fl">40</span>, <span class="fl">41</span>, <span class="fl">42</span>, <span class="fl">42</span>, <span class="fl">44</span>, 
         <span class="fl">44</span>, <span class="fl">35</span>, <span class="fl">37</span>, <span class="fl">38</span>, <span class="fl">38</span>, <span class="fl">34</span>, <span class="fl">13</span>, <span class="fl">14</span><span class="op">)</span></code></pre></div>
 <p>We can use a boxplot to visualize the distribution. This includes an outlier labeling criterion, and the dots beyond the whiskers are declared to be outlying.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html">boxplot</a></span><span class="op">(</span><span class="va">lead</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/boxplot.html" class="external-link">boxplot</a></span><span class="op">(</span><span class="va">lead</span><span class="op">)</span></code></pre></div>
 <p><img src="parody_files/figure-html/dobox1-1.png" width="700"></p>
 <p>The first formal assessment uses the familiar boxplot rules. For this, we need to supply a scaling function as described in the manual page.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -154,10 +156,10 @@
 </div>
 <div id="multivariate-samples" class="section level1">
 <h1 class="hasAnchor">
-<a href="#multivariate-samples" class="anchor"></a>Multivariate samples</h1>
+<a href="#multivariate-samples" class="anchor" aria-hidden="true"></a>Multivariate samples</h1>
 <p>A sample dataset called <code>tcost</code> is supplied with the package. Before visualizing, we compute a default multivariate outlier criterion, due to Caroni and Prescott, that generalizes Rosner’s GESD:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">tcost</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">tcost</span><span class="op">)</span>
 <span class="va">ostr</span> <span class="op">=</span> <span class="fu"><a href="../reference/mv.calout.detect.html">mv.calout.detect</a></span><span class="op">(</span><span class="va">tcost</span><span class="op">)</span>
 <span class="va">ostr</span></code></pre></div>
 <pre><code>## $inds
@@ -175,20 +177,20 @@
 ## [1] 0.05</code></pre>
 <p>We see that indices 9 and 21 are flagged. Let’s create a pairs plot with coloring.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">thecol</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">tcost</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">thecol</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">tcost</span><span class="op">)</span><span class="op">)</span>
 <span class="va">thecol</span><span class="op">[</span><span class="va">ostr</span><span class="op">$</span><span class="va">ind</span><span class="op">]</span> <span class="op">=</span> <span class="st">"red"</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html">pairs</a></span><span class="op">(</span><span class="va">tcost</span>, col<span class="op">=</span><span class="va">thecol</span>, pch<span class="op">=</span><span class="fl">19</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/pairs.html" class="external-link">pairs</a></span><span class="op">(</span><span class="va">tcost</span>, col<span class="op">=</span><span class="va">thecol</span>, pch<span class="op">=</span><span class="fl">19</span><span class="op">)</span></code></pre></div>
 <p><img src="parody_files/figure-html/doparis-1.png" width="700"></p>
 <p>Another display of interest employs principal components:</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pc</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span><span class="va">tcost</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/biplot.html">biplot</a></span><span class="op">(</span><span class="va">pc</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">pc</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp</a></span><span class="op">(</span><span class="va">tcost</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/biplot.html" class="external-link">biplot</a></span><span class="op">(</span><span class="va">pc</span><span class="op">)</span></code></pre></div>
 <p><img src="parody_files/figure-html/dobipi-1.png" width="700"></p>
 <p>To get a sense of the robustness (or lack thereof) of the biplot, let us replot after removing the datapoints that were marked as outliers by the Caroni and Prescott procedure.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ftcost</span> <span class="op">=</span> <span class="va">tcost</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">9</span>,<span class="fl">21</span><span class="op">)</span>,<span class="op">]</span>
-<span class="va">fpc</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html">prcomp</a></span><span class="op">(</span><span class="va">ftcost</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/biplot.html">biplot</a></span><span class="op">(</span><span class="va">fpc</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">ftcost</span> <span class="op">=</span> <span class="va">tcost</span><span class="op">[</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">9</span>,<span class="fl">21</span><span class="op">)</span>,<span class="op">]</span>
+<span class="va">fpc</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp</a></span><span class="op">(</span><span class="va">ftcost</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/biplot.html" class="external-link">biplot</a></span><span class="op">(</span><span class="va">fpc</span><span class="op">)</span></code></pre></div>
 <p><img src="parody_files/figure-html/mvmv-1.png" width="700"></p>
 </div>
   </div>
@@ -204,11 +206,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Vince Carey.</p>
+  <p></p>
+<p>Developed by Vince Carey.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>
@@ -216,6 +220,8 @@
 
   
 
+
+  
 
   </body>
 </html>
