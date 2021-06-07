@@ -93,6 +93,7 @@ jobs:
       - name: Query dependencies
         run: |
           install.packages('remotes')
+          devtools::install("Bioconductor/BiocManager", ref="pass-force")
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
         shell: Rscript {0}
 
@@ -145,7 +146,8 @@ jobs:
       - name: Install BiocManager
         run: |
           message(paste('****', Sys.time(), 'installing BiocManager ****'))
-          remotes::install_cran("BiocManager")
+          ## remotes::install_cran("BiocManager")
+          devtools::install_github("Bioconductor/BiocManager", ref = "pass-force")
         shell: Rscript {0}
 
       - name: Set BiocVersion
