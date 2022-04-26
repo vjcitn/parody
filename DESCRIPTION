@@ -1,6 +1,6 @@
 Package: parody
 Title: Parametric And Resistant Outlier DYtection
-Version: 1.53.1
+Version: 1.54.0
 Authors@R:
     person(given = "Vince",
            family = "Carey",
