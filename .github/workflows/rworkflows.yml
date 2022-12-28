@@ -5,6 +5,7 @@ name: rworkflows
     - master
     - main
     - RELEASE_**
+    - vjcci
   pull_request:
     branches:
     - master
