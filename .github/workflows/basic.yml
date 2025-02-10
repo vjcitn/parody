@@ -6,7 +6,7 @@ jobs:
   container-test-job:
     runs-on: ubuntu-latest
     container:
-      image: vjcitn/isochk:0.0.1
+      image: vjcitn/isochk:0.0.2
       env:
         NODE_ENV: development
       options: --cpus 1
