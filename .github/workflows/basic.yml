@@ -22,6 +22,6 @@ jobs:
       - name: What is here
         run: (ls)
       - name: get dependencies
-        run: (Rscript -e "BiocManager::instll(basename(getwd()), dependencies=TRUE)")
+        run: (Rscript -e "BiocManager::install(basename(getwd()), dependencies=TRUE)")
       - name: Run rcmdcheck
         run: (Rscript -e "rcmdcheck::rcmdcheck()")
