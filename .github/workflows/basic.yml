@@ -17,5 +17,9 @@ jobs:
         run: (Rscript -e version)
       - name: Where am I
         run: (pwd)
+      - name: Checkout Repository 
+        uses: actions/checkout@v2 
+      - name: What is here
+        run: (ls)
       - name: Run rcmdcheck
         run: (Rscript -e "rcmdcheck::rcmdcheck()")
