@@ -17,5 +17,5 @@ jobs:
         run: (Rscript -e version)
       - name: Where am I
         run: (pwd)
-      - name: What is here
-        run: (ls)
+      - name: Run rcmdcheck
+        run: (Rscript -e "rcmdcheck::rcmdcheck()")
