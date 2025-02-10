@@ -23,5 +23,7 @@ jobs:
         run: (ls)
       - name: get dependencies
         run: (Rscript -e "BiocManager::install(basename(getwd()), dependencies=TRUE)")
+      - name: Setup pandoc from r-lib
+        uses: r-lib/actions/setup-pandoc@master
       - name: Run rcmdcheck
         run: (Rscript -e "rcmdcheck::rcmdcheck()")
