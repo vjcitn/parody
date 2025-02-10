@@ -22,4 +22,4 @@ jobs:
       - name: What is here
         run: (ls)
       - name: Run rcmdcheck
-        run: (Rscript -e "rcmdcheck::rcmdcheck()")
+        run: (Rscript -e "rcmdcheck::rcmdcheck(basename(getwd()), dependencies=TRUE)")
