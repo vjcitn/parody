@@ -1,0 +1,15 @@
+name: CI
+on:
+  push:
+    branches: [ devel ]
+jobs:
+  container-test-job:
+    runs-on: ubuntu-latest
+    container:
+      image: vjcitn/isochk:0.0.1
+      env:
+        NODE_ENV: development
+      options: --cpus 1
+    steps:
+      - name: Check for dockerenv file
+        run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
