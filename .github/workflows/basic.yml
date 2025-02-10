@@ -15,3 +15,7 @@ jobs:
         run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
       - name: Assess R version
         run: (Rscript -e version)
+      - name: Where am I
+        run: (pwd)
+      - name: What is here
+        run: (ls)
