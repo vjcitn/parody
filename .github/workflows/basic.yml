@@ -33,5 +33,5 @@ jobs:
           pandoc-version: '3.1.11' # The pandoc vers
 #      - name: Run rcmdcheck
 #        run: (Rscript -e "rcmdcheck::rcmdcheck()")
-      -name: use action for check
-       uses: r-lib/actions/check-r-package@v2
+      - name: use action for check
+        uses: r-lib/actions/check-r-package@v2
