@@ -18,7 +18,7 @@ jobs:
       - name: Where am I
         run: (pwd)
       - name: Checkout Repository 
-        uses: actions/checkout@v2 
+        uses: actions/checkout@v3 
       - name: What is here
         run: (ls)
       - name: get dependencies
