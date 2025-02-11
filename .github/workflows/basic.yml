@@ -6,7 +6,7 @@ jobs:
   container-test-job:
     runs-on: ubuntu-latest
     container:
-      image: vjcitn/isochk:0.0.4
+      image: vjcitn/isochk:0.0.5
       env:
         NODE_ENV: development
       options: --cpus 1
@@ -31,7 +31,5 @@ jobs:
         uses: r-lib/actions/setup-pandoc@v2
         with:
           pandoc-version: '3.1.11' # The pandoc vers
-#      - name: Run rcmdcheck
-#        run: (Rscript -e "rcmdcheck::rcmdcheck()")
       - name: use action for check
         uses: r-lib/actions/check-r-package@v2
