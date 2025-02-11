@@ -6,7 +6,7 @@ jobs:
   container-test-job:
     runs-on: ubuntu-latest
     container:
-      image: vjcitn/isochk:0.0.4  # uses Bioconductor 3.20
+      image: vjcitn/isochk:0.0.4
       env:
         NODE_ENV: development
       options: --cpus 1
@@ -19,8 +19,6 @@ jobs:
         run: (pwd)
       - name: Checkout Repository 
         uses: actions/checkout@v2 
-      - name: check out release branch
-        run: (git checkout RELEASE_3_20)
       - name: What is here
         run: (ls)
       - name: get dependencies
