@@ -26,7 +26,7 @@ jobs:
       - name: view DESCRIPTION
         run: (cat DESCRIPTION)
       - name: get dependencies
-        run: (Rscript -e "BiocManager::install(c(basename(getwd()), 'qpdf'), dependencies=TRUE, update=FALSE)")
+        run: (Rscript -e "BiocManager::install(c(basename(getwd()), 'qpdf', 'rcmdcheck'), dependencies=TRUE, update=FALSE)")
       - name: Setup pandoc from r-lib
         uses: r-lib/actions/setup-pandoc@v2
         with:
