@@ -20,7 +20,9 @@ jobs:
       - name: Checkout Repository 
         uses: actions/checkout@v3 
       - name: get release branch
-        run: git fetch --all ;; git checkout RELEASE_3_20
+        run: |
+          git fetch --all  
+          git checkout RELEASE_3_20
       - name: What is here
         run: (ls)
       - name: view DESCRIPTION
