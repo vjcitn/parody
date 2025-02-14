@@ -1,5 +1,5 @@
-# important element is REL_3_20_ISO in ref below
-name: CI
+
+name: CI4bioc320
 on:
   push:
     branches: [ REL_3_20_ISO ]
@@ -7,8 +7,8 @@ jobs:
   container-test-job:
     runs-on: ubuntu-latest
     container:
-      image: vjcitn/isochk:0.0.7
-# using r2u in 0.0.7
+      image: vjcitn/isob2u:0.0.1
+# using r2u via bioc2u
       env:
         NODE_ENV: development
       options: --cpus 2
@@ -30,7 +30,7 @@ jobs:
       - name: view DESCRIPTION
         run: (cat DESCRIPTION)
       - name: get dependencies
-        run: (Rscript -e "BiocManager::install(c(basename(getwd()), ref='RELEASE_3_20'), dependencies=TRUE, update=FALSE, Ncpus=2)")
+        run: (Rscript -e "BiocManager::install(basename(getwd()), ref='RELEASE_3_20', dependencies=TRUE, update=FALSE, Ncpus=2, type='both')")
       - name: look at pkgs
         run: (Rscript -e 'print(sort(rownames(installed.packages())))')
       - name: do r cmd check
