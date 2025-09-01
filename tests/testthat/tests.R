@@ -241,7 +241,7 @@ test_that("outlier detection helper functions work", {
  expect_true(1000 %in% tuk_inds$val)
  
  # Test hampoutinds function  
- hamp_inds = hampoutinds(test_data_with_outlier)
+ hamp_inds = hampoutinds(test_data_with_outlier, alpha=0.05)
  expect_true("ind" %in% names(hamp_inds))
  expect_true("val" %in% names(hamp_inds))
  expect_true("outlier.region" %in% names(hamp_inds))
@@ -257,6 +257,6 @@ test_that("outlier detection helper functions work", {
  # Test with data that has no outliers - should generate warnings
  normal_data = rnorm(20, mean=0, sd=1)
  expect_warning(tukeyorinds(normal_data), "no data values in outlier region")
- expect_warning(hampoutinds(normal_data), "no data values in outlier region")
+ expect_warning(hampoutinds(normal_data, alpha=0.05), "no data values in outlier region")
  expect_warning(rououtinds(normal_data), "no data values in outlier region")
 })
