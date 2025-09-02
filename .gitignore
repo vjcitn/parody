@@ -1,0 +1,12 @@
+# R package check output
+..Rcheck/
+*.Rcheck/
+
+# R build artifacts
+*.tar.gz
+*.zip
+
+# Temporary files
+.Rhistory
+.RData
+.Ruserdata
